@@ -5,55 +5,80 @@ import '../../../Constants/colors.dart';
 import '../../../Constants/text_styles.dart';
 
 class LoginScreen extends StatelessWidget {
-   LoginScreen({Key? key}) : super(key: key);
-final LoginController loginController = Get.put(LoginController());
+  LoginScreen({Key? key}) : super(key: key);
+  final LoginController loginController = Get.put(LoginController());
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: UIColors.primary,
+        backgroundColor: UIColors.white,
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 100),
-                alignment: Alignment.center,
-                child:  Text("تسجيل الدخول", style: UITextStyle.titleBold.copyWith(fontSize: 25 )),
+              const SizedBox(
+                height: 100,
               ),
-             const SizedBox(height: 30,),
-             const Center(
-               child:  CircleAvatar(
-                  radius: 90,
-                 backgroundColor: UIColors.primary,
-                  backgroundImage: AssetImage("assets/images/Group 5.png"),
+              Center(
+                child: Image.asset("assets/images/Group 5.png",),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: Text("تسجيل الدخول",
+                    style: UITextStyle.bodyNormal
+                        .copyWith(fontSize: 25, color: UIColors.primary)),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('اسم المستخدم',
+                        style: UITextStyle.bodyNormal.copyWith(fontSize: 16,color: UIColors.black))
+                  ],
                 ),
-             ),
-              const SizedBox(height: 20,),
+              ),
               TextFormField(
                 style: UITextStyle.titleBold.copyWith(color: Colors.black),
-                controller: loginController.phoneTextController,
+                controller: loginController.usernameTextController,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: UIColors.white,
                   border: const OutlineInputBorder(),
-                  hintText: 'أدخل رقم هاتفك',
-                  hintStyle: UITextStyle.normalSmall,
                   enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        width: 2, color: UIColors.lightBlack),
+                    borderSide:
+                        const BorderSide(width: 2, color: UIColors.primary),
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide: const BorderSide(color: UIColors.gray)),
+                      borderSide: const BorderSide(color: UIColors.primary)),
                 ),
                 maxLines: 1,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('كلمة المرور',
+                        style: UITextStyle.bodyNormal.copyWith(fontSize: 16,color: UIColors.black,fontWeight: FontWeight.normal))
+                  ],
+                ),
+              ),
               Obx(() {
                 return TextFormField(
                   style: UITextStyle.titleBold.copyWith(color: Colors.black),
@@ -71,16 +96,14 @@ final LoginController loginController = Get.put(LoginController());
                       },
                     ),
                     border: const OutlineInputBorder(),
-                    hintText: 'أدخل كلمة المرور الخاصة بك',
-                    hintStyle: UITextStyle.normalSmall,
                     enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          width: 2, color: UIColors.lightBlack),
+                      borderSide:
+                          const BorderSide(width: 2, color: UIColors.primary),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: const BorderSide(color: UIColors.gray)),
+                        borderSide: const BorderSide(color: UIColors.primary)),
                   ),
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: !loginController.passwordVisible.value,
@@ -93,18 +116,18 @@ final LoginController loginController = Get.put(LoginController());
               MaterialButton(
                 height: 56,
                 minWidth: Get.width,
-                color: UIColors.studentTime,
+                color: UIColors.primary,
                 shape: const RoundedRectangleBorder(
-                    borderRadius:
-                    BorderRadius.all(Radius.circular(20.0))),
+                    borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                       Text('تسجيل الدخول', style: UITextStyle.titleBold)
-                    ],
-                  ),
-                onPressed: () async{
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('المتابعة',
+                        style: UITextStyle.titleBold.copyWith(fontSize: 22))
+                  ],
+                ),
+                onPressed: () async {
                   await loginController.login();
                 },
               ),

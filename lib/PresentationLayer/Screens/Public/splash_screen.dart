@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
+import '../../../BusinessLayer/Controllers/splash_controller.dart';
 import '../../../Constants/colors.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+   SplashScreen({Key? key}) : super(key: key);
+final SplashController splashController = Get.put(SplashController());
 
   @override
   Widget build(BuildContext context) {

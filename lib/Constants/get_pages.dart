@@ -7,7 +7,7 @@ import 'get_routes.dart';
 List<GetPage<dynamic>> getPages = [
   GetPage(
       name: AppRoutes.splashScreen,
-      page: () => const SplashScreen(),
+      page: () =>  SplashScreen(),
       transition: Transition.leftToRightWithFade),
   GetPage(
       name: AppRoutes.loginScreen,

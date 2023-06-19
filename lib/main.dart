@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
       title: 'School',
       initialBinding: InitBinding(),
       getPages: getPages,
-      //home:  LoginScreen(),
     );
   }
 }

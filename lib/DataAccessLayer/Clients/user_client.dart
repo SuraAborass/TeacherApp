@@ -7,7 +7,7 @@ class UserClient {
   Future<dynamic> login(phone, password) async {
     var response = await http.post(Uri.parse(baseLink + loginLink),
         body:
-            jsonEncode(<String, dynamic>{"phone": phone, "password": password}),
+            jsonEncode(<String, dynamic>{"username": phone, "password": password}),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         });
