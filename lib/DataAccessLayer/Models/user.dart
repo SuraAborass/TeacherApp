@@ -7,14 +7,14 @@ class User {
   final String name;
   final String address;
   final String token;
-  final List<Student> students;
+ // final List<Student> students;
   User({
     required this.id,
     required this.phone,
     required this.name,
     required this.address,
     required this.token,
-    required this.students
+  //  required this.students
   });
 
   Map<String, dynamic> toMap() {
@@ -24,7 +24,7 @@ class User {
       'name': name,
       'address' : address,
       'token': token,
-      'students' : students
+     // 'students' : students
     };
   }
 
@@ -34,11 +34,11 @@ class User {
       phone: map['user']['phone'] ?? '',
       name: map['user']['name'] ?? '',
       address: map['user']['address'] ?? '',
-      students: List<Student>.from(
-        (map['students'] as List<dynamic>).map<Student>(
-              (l) => Student.fromMap(l as Map<String, dynamic>),
-        ),
-      ),
+      // students: List<Student>.from(
+      //   (map['students'] as List<dynamic>).map<Student>(
+      //         (l) => Student.fromMap(l as Map<String, dynamic>),
+      //   ),
+      // ),
       token: map['token'] ?? '',
 
     );
@@ -48,11 +48,11 @@ class User {
       id: map['id']?.toInt() ?? 0,
       phone: map['phone'] ?? '',
       name: map['name'] ?? '',
-      students: List<Student>.from(
-        (map['students'] ?? []).map<Student>(
-              (l) => Student.fromMap(l as Map<String, dynamic>),
-        ) ,
-      ),
+      // students: List<Student>.from(
+      //   (map['students'] ?? []).map<Student>(
+      //         (l) => Student.fromMap(l as Map<String, dynamic>),
+      //   ) ,
+      // ),
       address: map['address'] ?? '',
       token: map['token'] ?? '',
 

@@ -8,13 +8,8 @@ PreferredSizeWidget schoolAppBar(
   return AppBar(
     elevation: 0.0,
     centerTitle: true,
-    title: title,
-    backgroundColor: UIColors.primary,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        bottomRight: Radius.circular(24),
-      ),
-    ),
+    title:  Text("Schoolify",style: UITextStyle.bodyNormal.copyWith(color: UIColors.white,fontSize: 22)),
+    backgroundColor: UIColors.purple,
     leading:   Builder(builder: (context) {
       return IconButton(
           onPressed: () {
