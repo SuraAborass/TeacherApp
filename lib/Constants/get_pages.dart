@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import '../BusinessLayer/Bindings/init_bindings.dart';
 import '../PresentationLayer/Screens/Auth/login_screen.dart';
+import '../PresentationLayer/Screens/Public/attendance_screen.dart';
 import '../PresentationLayer/Screens/Public/home_screen.dart';
 import '../PresentationLayer/Screens/Public/splash_screen.dart';
 import 'get_routes.dart';
@@ -20,5 +21,9 @@ List<GetPage<dynamic>> getPages = [
       page: () => HomeScreen(),
       transition: Transition.zoom,
       binding: InitBinding()),
+  GetPage(
+      name: AppRoutes.attendanceScreen,
+      page: () => AttendanceScreen(),
+      transition: Transition.zoom),
 
 ];

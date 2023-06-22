@@ -21,16 +21,5 @@ class UITextStyle{
      fontSize: 18,
      fontFamily: "Hacen Tunisia Lt");
 
- static const boldSmall = TextStyle(
-     fontWeight: FontWeight.bold,
-     color: UIColors.labelTextColor,
-     fontSize: 16,
-     fontFamily: "Hacen Tunisia Lt");
-
- static const normalSmall = TextStyle(
-     fontWeight: FontWeight.normal,
-     color: UIColors.labelTextColor,
-     fontSize: 16,
-     fontFamily: "Hacen Tunisia Lt");
 
 }

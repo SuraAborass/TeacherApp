@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:teacher_app/Constants/colors.dart';
 import 'package:get/get.dart';
 import '../../../Constants/text_styles.dart';
+import '../../Widgets/HomeWidgets/create_homework.dart';
+import '../../Widgets/HomeWidgets/examResults.dart';
+import '../../Widgets/HomeWidgets/send_alerts.dart';
+import '../../Widgets/HomeWidgets/attendance.dart';
 import '../../Widgets/Public/drawer.dart';
 import '../../Widgets/Public/school_appbar.dart';
+import '../../Widgets/HomeWidgets/students.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,6 +23,7 @@ class HomeScreen extends StatelessWidget {
         body: Column(
           children: [
             Expanded(
+              flex: 1,
               child: Stack(
                 children: [
                   Container(
@@ -95,7 +101,7 @@ class HomeScreen extends StatelessWidget {
                                 IconButton(
                                     onPressed: () {},
                                     icon: const Icon(
-                                      Icons.refresh,
+                                      Icons.restart_alt,
                                       size: 30,
                                       color: UIColors.white,
                                     ))
@@ -109,37 +115,34 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            // Expanded(
-            //     child: Padding(
-            //   padding: const EdgeInsets.all(15.0),
-            //   child: ListView(
-            //     children: [
-            //       Container(
-            //         height: 70,
-            //         width: 360,
-            //         decoration: BoxDecoration(
-            //             color: UIColors.white,
-            //             borderRadius: const BorderRadius.all(
-            //               Radius.circular(15),
-            //             ),
-            //             border: Border.all(width: 2, color: UIColors.primary)),
-            //         child: Row(
-            //           children: [
-            //             Expanded(
-            //               flex: 1,
-            //               child: Icon(
-            //                 Icons.people,
-            //                 size: 30,
-            //                 color: UIColors.purple,
-            //               ),
-            //             ),
-            //
-            //           ],
-            //         ),
-            //       )
-            //     ],
-            //   ),
-            // ))
+            Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: SizedBox(
+                    child: ListView(
+                      children: const [
+                        StudentsContainer(),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Attendance(),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        CreateHomeWorks(),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        SendAlerts(),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ExamResults()
+                      ],
+                    ),
+                  ),
+                ))
           ],
         ),
       ),

@@ -11,7 +11,7 @@ Widget pageTitle(title) {
       children: [
         Text(
           title,
-          style: UITextStyle.titleBold.copyWith(color: UIColors.primary,fontSize: 20),
+          style: UITextStyle.bodyNormal.copyWith(color: UIColors.pageTitle,fontSize: 20),
         ),
       ],
     ),
