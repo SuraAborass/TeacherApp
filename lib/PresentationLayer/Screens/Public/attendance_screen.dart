@@ -58,13 +58,15 @@ final StudentsController studentsController = Get.put(StudentsController());
                     padding: const EdgeInsets.all(5.0),
                     child: pageTitle("تسجيل الحضور والغياب"),
                   ),
-                  ListView.builder(
-                    itemCount: studentsController.students.length,
-                    itemBuilder: (context, i) {
-                      return StudentItem(
-                        student: studentsController.students[i],
-                      );
-                    },
+                  Flexible(
+                    child: ListView.builder(
+                      itemCount: studentsController.students.length,
+                      itemBuilder: (context, i) {
+                        return StudentItem(
+                          student: studentsController.students[i],
+                        );
+                      },
+                    ),
                   )
                 ],
               ),

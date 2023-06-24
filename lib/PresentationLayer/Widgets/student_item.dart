@@ -40,12 +40,12 @@ class StudentItem extends StatelessWidget {
                       style: UITextStyle.bodyNormal.copyWith(color: UIColors.pageTitle,fontSize: 18)),
                 )),
             Expanded(child: IconButton(
-              onPressed:(){
-                studentsController.toggleAdd();
-              },
               icon:  Icon(!studentsController.isAdded.value
                 ?Icons.check_circle_outline_outlined
-                :Icons.check_circle_rounded ,color: UIColors.purple ,size: 40,),))
+                :Icons.check_circle_rounded ,color: UIColors.purple ,size: 40,),
+              onPressed:(){
+                studentsController.toggleAdd();
+              },))
           ],
         ));
   }
