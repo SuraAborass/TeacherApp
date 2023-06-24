@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_app/Constants/colors.dart';
 import 'package:get/get.dart';
+import '../../../BusinessLayer/Controllers/students_controller.dart';
 import '../../../Constants/text_styles.dart';
+import '../../../DataAccessLayer/Models/student.dart';
 import '../../Widgets/Public/drawer.dart';
 import '../../Widgets/Public/page_title.dart';
 import '../../Widgets/Public/school_appbar.dart';
+import '../../Widgets/student_item.dart';
 
 class AttendanceScreen extends StatelessWidget {
-  const AttendanceScreen({Key? key}) : super(key: key);
+   AttendanceScreen({Key? key}) : super(key: key);
+ Student? student;
+final StudentsController studentsController = Get.put(StudentsController());
 
   @override
   Widget build(BuildContext context) {
@@ -18,94 +23,53 @@ class AttendanceScreen extends StatelessWidget {
         appBar: schoolAppBar(),
         drawer: SchoolDrawer(),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: MaterialButton(
-            height: 56,
-            //minWidth: Get.width,
-            color: UIColors.primary,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(18.0))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text('حفظ',
-                    style: UITextStyle.bodyNormal.copyWith(fontSize: 22,color: UIColors.white))
-              ],
-            ),
-            onPressed: () async {},
+          padding: const EdgeInsets.all(30.0),
+          child: GetBuilder(
+            init: studentsController,
+            builder: (context) {
+              return MaterialButton(
+                height: 56,
+                color: UIColors.primary,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(18.0))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('حفظ',
+                        style: UITextStyle.bodyNormal.copyWith(fontSize: 22,color: UIColors.white))
+                  ],
+                ),
+                onPressed: () async {
+                  studentsController.addStudentId(student!.id);
+                },
+              );
+            }
           ),
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: pageTitle("تسجيل الحضور والغياب"),
-            ),
-            Container(
-                margin: const EdgeInsets.symmetric(vertical: 8),
-                width: Get.width,
-                height: 56,
-                decoration: const BoxDecoration(
-                  color: UIColors.lightWhite,
-                ),
-                child: Row(
-                  children:  [
-                    const Expanded(
-                      flex: 1,
-                      child: CircleAvatar(
-                        radius: 30,
-                        backgroundImage: AssetImage("assets/images/Mask Group 1.png"),
-                       // backgroundColor: UIColors.circleAvatarBackground,
-                      )
-                    ),
-                     Expanded(
-                        flex: 2,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 10,
-                          ),
-                          child: Text("سرى أبوراس",
-                              style: UITextStyle.bodyNormal.copyWith(color: UIColors.pageTitle,fontSize: 18)),
-                        )),
-                    Expanded(child: IconButton(
-                      onPressed:(){},
-                      icon: const Icon(Icons.check_circle,color: UIColors.purple ,size: 40,),))
-                  ],
-                )),
-            const SizedBox(height: 5,),
-            Container(
-                margin: const EdgeInsets.symmetric(vertical: 8),
-                width: Get.width,
-                height: 56,
-                decoration: const BoxDecoration(
-                  color: UIColors.lightWhite,
-                ),
-                child: Row(
-                  children:  [
-                    const Expanded(
-                        flex: 1,
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundImage: AssetImage("assets/images/Mask Group 1.png"),
-                          // backgroundColor: UIColors.circleAvatarBackground,
-                        )
-                    ),
-                    Expanded(
-                        flex: 2,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 10,
-                          ),
-                          child: Text("سرى أبوراس",
-                              style: UITextStyle.bodyNormal.copyWith(color: UIColors.pageTitle,fontSize: 18)),
-                        )),
-                    Expanded(child: IconButton(
-                      onPressed:(){},
-                      icon: const Icon(Icons.check_circle,color: UIColors.purple ,size: 40,),))
-                  ],
-                ))
-          ],
+        body: GetBuilder(
+          init: studentsController,
+          builder: (context) {
+            return SizedBox(
+              height: Get.height,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: pageTitle("تسجيل الحضور والغياب"),
+                  ),
+                  ListView.builder(
+                    itemCount: studentsController.students.length,
+                    itemBuilder: (context, i) {
+                      return StudentItem(
+                        student: studentsController.students[i],
+                      );
+                    },
+                  )
+                ],
+              ),
+            );
+          }
         ),
       ),
     );
