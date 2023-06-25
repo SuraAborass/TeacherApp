@@ -73,8 +73,9 @@ class HomeScreen extends StatelessWidget {
                           style: UITextStyle.bodyNormal.copyWith(
                               fontSize: 18, color: UIColors.normalText),
                         ),
+                        const SizedBox(height: 10,),
                         Padding(
-                          padding: const EdgeInsets.all(15.0),
+                          padding: const EdgeInsets.only(left: 15.0,right: 15.0),
                           child: Container(
                             //padding: const EdgeInsets.all(10),
                             height: 48,

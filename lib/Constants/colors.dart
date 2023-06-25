@@ -13,6 +13,10 @@ static const darkNormalText = Color(0xff6D6D6D);
 static const circleAvatarBackground = Color(0xffD5D5D5);
 static const pageTitle = Color(0xff005178);
 
+//shimmers
+  static const shimmerBaseColor = Color.fromARGB(225,248, 248, 248);
+  static const shimmerHighLightColor = Colors.grey;
+
 //snackbars
   static const success = Color.fromARGB(255, 99, 184, 91);
   static const warning = Color.fromARGB(255, 233, 196, 73);

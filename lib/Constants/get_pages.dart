@@ -24,6 +24,6 @@ List<GetPage<dynamic>> getPages = [
   GetPage(
       name: AppRoutes.attendanceScreen,
       page: () => AttendanceScreen(),
-      transition: Transition.zoom),
+      transition: Transition.leftToRight),
 
 ];

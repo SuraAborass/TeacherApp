@@ -7,11 +7,12 @@ import '../../../DataAccessLayer/Models/student.dart';
 import '../../Widgets/Public/drawer.dart';
 import '../../Widgets/Public/page_title.dart';
 import '../../Widgets/Public/school_appbar.dart';
+import '../../Widgets/Shimmers/student_shimmer.dart';
 import '../../Widgets/student_item.dart';
 
 class AttendanceScreen extends StatelessWidget {
    AttendanceScreen({Key? key}) : super(key: key);
- Student? student;
+  Student? student;
 final StudentsController studentsController = Get.put(StudentsController());
 
   @override
@@ -50,7 +51,25 @@ final StudentsController studentsController = Get.put(StudentsController());
         body: GetBuilder(
           init: studentsController,
           builder: (context) {
-            return SizedBox(
+            return studentsController.loading.value == true
+                ? SizedBox(
+                   height: Get.height,
+                    child: Column( children:[
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: pageTitle("تسجيل الحضور والغياب"),
+                      ),
+                      Flexible(child: ListView.builder(
+                        itemCount: 10,
+                        itemBuilder: (context, i) {
+                          return const StudentShimmer();
+                        },
+                      ),
+                      )
+                    ]
+              ),
+            )
+              :SizedBox(
               height: Get.height,
               child: Column(
                 children: [

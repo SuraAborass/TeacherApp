@@ -23,10 +23,12 @@ class StudentsController extends GetxController{
   }
 
   void addStudentId (int studentId){
-    studentsIds.add(studentId);
+    if(!studentsIds.contains(studentId))
+      {   studentsIds.add(studentId);}
+
   }
 
-  void toggleAdd() {
+  void toggleAdd(int studentId) {
     isAdded.value = !isAdded.value;
     //update();
 
