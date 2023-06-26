@@ -44,8 +44,9 @@ class StudentItem extends StatelessWidget {
                 ?Icons.check_circle_outline_outlined
                 :Icons.check_circle_rounded ,color: UIColors.purple ,size: 40,),
               onPressed:(){
-                studentsController.toggleAdd(student.id);
-              },))
+                studentsController.toggleAdd();
+              },)
+            )
           ],
         ));
   }

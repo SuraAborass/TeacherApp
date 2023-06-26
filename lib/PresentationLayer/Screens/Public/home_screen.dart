@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_app/Constants/colors.dart';
 import 'package:get/get.dart';
+import 'package:teacher_app/main.dart';
 import '../../../Constants/text_styles.dart';
 import '../../Widgets/HomeWidgets/create_homework.dart';
 import '../../Widgets/HomeWidgets/examResults.dart';
@@ -46,13 +47,13 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Positioned(
+                   Positioned(
                       top: 20,
                       right: 110,
                       child: CircleAvatar(
                         radius: 60,
                         backgroundImage:
-                            AssetImage("assets/images/Ellipse 1.png"),
+                            NetworkImage(MyApp.appUser!.image),
                       )),
                   Positioned(
                     top: 150,
@@ -61,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "سرى أبوراس ",
+                          MyApp.appUser!.name,
                           style: UITextStyle.titleBold
                               .copyWith(color: UIColors.purple, fontSize: 22),
                         ),
@@ -69,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                           height: 2,
                         ),
                         Text(
-                          "الرياضيات",
+                          MyApp.appUser!.subject,
                           style: UITextStyle.bodyNormal.copyWith(
                               fontSize: 18, color: UIColors.normalText),
                         ),

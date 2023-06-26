@@ -19,9 +19,9 @@ final UserController userController = Get.find();
                   style: UITextStyle.titleBold.copyWith(color: UIColors.primary)),
               accountEmail:  Text( MyApp.appUser != null ? MyApp.appUser!.phone : "",
                   style:  UITextStyle.bodyNormal.copyWith(color: UIColors.lightBlack)),
-            currentAccountPicture: const CircleAvatar(
-             // backgroundImage: NetworkImage(MyApp.appUser!.avatar),
-              backgroundColor: UIColors.primary,
+            currentAccountPicture:  CircleAvatar(
+              backgroundImage: NetworkImage(MyApp.appUser!.image),
+              //backgroundColor: UIColors.primary,
             ),
           ),
           if (MyApp.appUser != null)

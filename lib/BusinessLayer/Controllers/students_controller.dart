@@ -28,7 +28,7 @@ class StudentsController extends GetxController{
 
   }
 
-  void toggleAdd(int studentId) {
+  void toggleAdd() {
     isAdded.value = !isAdded.value;
     //update();
 
