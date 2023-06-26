@@ -43,7 +43,7 @@ class User {
       subject: map['user']['subject'] ?? '',
       address: map['user']['address'] ?? '',
       students: List<Student>.from(
-        (map['students'] as List<dynamic>).map<Student>(
+        (map['user']['students'] as List<dynamic>).map<Student>(
               (l) => Student.fromMap(l as Map<String, dynamic>),
         ),
       ),
