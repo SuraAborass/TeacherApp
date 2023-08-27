@@ -26,7 +26,7 @@ class StudentItem extends StatelessWidget {
                 flex: 1,
                 child: CircleAvatar(
                   radius: 30,
-                  backgroundImage: NetworkImage(student.image),
+                  backgroundImage: NetworkImage("http://school.brain.sy/storage/${student.image}"),
                   // backgroundColor: UIColors.circleAvatarBackground,
                 )
             ),

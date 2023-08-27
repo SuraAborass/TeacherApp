@@ -2,28 +2,30 @@ import 'package:get_storage/get_storage.dart';
 import '../Models/user.dart';
 
 class BoxClient {
-  var box = GetStorage();
+  final box = GetStorage();
+
+  get json => null;
+
   Future<bool> getAuthState() async {
-    print(box.read('authed'));
-    if (await box.read('authed') != null) {
+    print(box.read('authed_teacher'));
+    if (await box.read('authed_teacher') != null) {
       return true;
     }
     return false;
   }
 
   Future<User> getAuthedUser() async {
-    print(await box.read('userdata'));
-    return User.fromBoxMap(await box.read('userdata'));
+    return User.fromBoxMap(await box.read('user_teacher'));
   }
 
   Future<void> setAuthedUser(User user) async {
-    await box.write('authed', true);
-    await box.write('userdata', user.toMap());
+    await box.write('authed_teacher', true);
+    await box.write('user_teacher', user.toMap());
   }
 
   Future<void> removeUserData() async {
-    await box.remove('authed');
-    await box.remove('userdata');
+    await box.remove('authed_teacher');
+    await box.remove('user_teacher');
   }
 
 }

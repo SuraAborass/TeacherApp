@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../BusinessLayer/Controllers/login_controller.dart';
+import '../../../BusinessLayer/Controllers/auth_controller.dart';
 import '../../../Constants/colors.dart';
 import '../../../Constants/text_styles.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
-  final LoginController loginController = Get.put(LoginController());
+  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,9 @@ class LoginScreen extends StatelessWidget {
                 height: 100,
               ),
               Center(
-                child: Image.asset("assets/images/Group 5.png",),
+                child: Image.asset(
+                  "assets/images/Group 5.png",
+                ),
               ),
               const SizedBox(
                 height: 30,
@@ -45,13 +47,14 @@ class LoginScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('اسم المستخدم',
-                        style: UITextStyle.bodyNormal.copyWith(fontSize: 16,color: UIColors.black))
+                        style: UITextStyle.bodyNormal
+                            .copyWith(fontSize: 16, color: UIColors.black))
                   ],
                 ),
               ),
               TextFormField(
                 style: UITextStyle.titleBold.copyWith(color: Colors.black),
-                controller: loginController.usernameTextController,
+                controller: authController.usernameTextController,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: UIColors.white,
@@ -75,24 +78,27 @@ class LoginScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('كلمة المرور',
-                        style: UITextStyle.bodyNormal.copyWith(fontSize: 16,color: UIColors.black,fontWeight: FontWeight.normal))
+                        style: UITextStyle.bodyNormal.copyWith(
+                            fontSize: 16,
+                            color: UIColors.black,
+                            fontWeight: FontWeight.normal))
                   ],
                 ),
               ),
               Obx(() {
                 return TextFormField(
                   style: UITextStyle.titleBold.copyWith(color: Colors.black),
-                  controller: loginController.passwordTextController,
+                  controller: authController.passwordTextController,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: UIColors.white,
                     suffixIcon: IconButton(
-                      icon: Icon(!loginController.passwordVisible.value
+                      icon: Icon(!authController.passwordVisible.value
                           ? Icons.visibility_off
                           : Icons.visibility),
                       color: UIColors.gray,
                       onPressed: () {
-                        loginController.togglePasswordVisible();
+                        authController.togglePasswordVisible();
                       },
                     ),
                     border: const OutlineInputBorder(),
@@ -106,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                         borderSide: const BorderSide(color: UIColors.primary)),
                   ),
                   keyboardType: TextInputType.visiblePassword,
-                  obscureText: !loginController.passwordVisible.value,
+                  obscureText: !authController.passwordVisible.value,
                   maxLines: 1,
                 );
               }),
@@ -119,16 +125,20 @@ class LoginScreen extends StatelessWidget {
                 color: UIColors.primary,
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text('المتابعة',
-                        style: UITextStyle.titleBold.copyWith(fontSize: 22))
-                  ],
-                ),
+                child: Obx(() {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      if (authController.sending.value == true)
+                        const CircularProgressIndicator(),
+                      Text('المتابعة',
+                          style: UITextStyle.titleBold.copyWith(fontSize: 22))
+                    ],
+                  );
+                }),
                 onPressed: () async {
-                  await loginController.login();
+                  await authController.login();
                 },
               ),
             ],

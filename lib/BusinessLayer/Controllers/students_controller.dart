@@ -30,7 +30,7 @@ class StudentsController extends GetxController{
 
   void toggleAdd() {
     isAdded.value = !isAdded.value;
-    //update();
+    update();
 
   }
 }

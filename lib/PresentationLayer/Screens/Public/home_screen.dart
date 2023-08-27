@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_app/Constants/colors.dart';
 import 'package:get/get.dart';
+import 'package:teacher_app/Constants/get_routes.dart';
 import 'package:teacher_app/main.dart';
 import '../../../Constants/text_styles.dart';
 import '../../Widgets/HomeWidgets/create_homework.dart';
@@ -53,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 60,
                         backgroundImage:
-                            NetworkImage(MyApp.appUser!.image),
+                            NetworkImage(MyApp.appUserTeacher!.image),
                       )),
                   Positioned(
                     top: 150,
@@ -62,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          MyApp.appUser!.name,
+                          MyApp.appUserTeacher!.name,
                           style: UITextStyle.titleBold
                               .copyWith(color: UIColors.purple, fontSize: 22),
                         ),
@@ -70,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                           height: 2,
                         ),
                         Text(
-                          MyApp.appUser!.subject,
+                          MyApp.appUserTeacher!.subject,
                           style: UITextStyle.bodyNormal.copyWith(
                               fontSize: 18, color: UIColors.normalText),
                         ),
@@ -101,7 +102,9 @@ class HomeScreen extends StatelessWidget {
                                   width: 40,
                                 ),
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Get.toNamed(AppRoutes.classes);
+                                    },
                                     icon: const Icon(
                                       Icons.restart_alt,
                                       size: 30,

@@ -14,13 +14,13 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  static User? appUser;
+  static User? appUserTeacher;
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'School',
+      title: 'Teacher',
       initialBinding: InitBinding(),
       getPages: getPages,
     );

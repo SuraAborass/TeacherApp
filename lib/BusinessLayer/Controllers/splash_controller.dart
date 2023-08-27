@@ -1,25 +1,28 @@
 import 'package:get/get.dart';
 import 'package:teacher_app/BusinessLayer/Controllers/user_controller.dart';
 import '../../Constants/get_routes.dart';
+import '../../DataAccessLayer/Clients/box_client.dart';
 import '../../main.dart';
 
 class SplashController extends GetxController {
-  UserController userController = Get.find();
+  final BoxClient boxClient = BoxClient();
 
-  @override
-  void onReady() {
-
-    if (userController.authed == true) {
-      if (userController.user != null) {
-        MyApp.appUser = userController.user;
-      }
+  Future<void> checkAuth() async {
+    bool authed = await boxClient.getAuthState();
+    if (authed == true) {
+      MyApp.appUserTeacher = await boxClient.getAuthedUser();
       Future.delayed(const Duration(seconds: 3))
-          .then((value) => Get.toNamed(AppRoutes.homeScreen));
+          .then((value) => Get.offAndToNamed(AppRoutes.homeScreen));
     } else {
       Future.delayed(const Duration(seconds: 3))
-          .then((value) => Get.toNamed(AppRoutes.loginScreen));
+          .then((value) => Get.offAndToNamed(AppRoutes.loginScreen));
     }
-    super.onReady();
+  }
+
+  @override
+  void onInit() async {
+    await checkAuth();
+    super.onInit();
   }
 }
 
