@@ -53,7 +53,7 @@ class User {
   }
   factory User.fromBoxMap(Map<String, dynamic> map) {
     return User(
-      id: map['id']?.toInt() ?? 0,
+      id: map['id'] ?? 0,
       phone: map['phone'] ?? '',
       name: map['name'] ?? '',
       image: map['image'] ?? '',
