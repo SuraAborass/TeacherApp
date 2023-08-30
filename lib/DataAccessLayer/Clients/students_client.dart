@@ -11,4 +11,15 @@ class StudentsClient {
       return "";
     }
   }
+
+  Future<dynamic> getTeacherStudents() async {
+    var response = await http.get(Uri.parse(baseLink + teacherStudents));
+    print(response.body);
+    if (response.statusCode == 200) {
+      return response.body;
+    } else {
+      return "";
+    }
+  }
+
 }

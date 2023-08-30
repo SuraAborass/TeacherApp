@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../BusinessLayer/Controllers/students_controller.dart';
-import '../../Constants/colors.dart';
-import '../../Constants/text_styles.dart';
-import '../../DataAccessLayer/Models/student.dart';
+import '../../../BusinessLayer/Controllers/students_controller.dart';
+import '../../../Constants/colors.dart';
+import '../../../Constants/text_styles.dart';
+import '../../../DataAccessLayer/Models/student.dart';
 
 
 class StudentItem extends StatelessWidget {
@@ -26,7 +26,7 @@ class StudentItem extends StatelessWidget {
                 flex: 1,
                 child: CircleAvatar(
                   radius: 30,
-                  backgroundImage: NetworkImage("http://school.brain.sy/storage/${student.image}"),
+                  backgroundImage: NetworkImage(student.image),
                   // backgroundColor: UIColors.circleAvatarBackground,
                 )
             ),

@@ -35,7 +35,7 @@ final Classroom classroom;
               flex: 3,
               child: ListTile(
                 title: Text(
-                  classroom.grade,
+                  classroom.name,
                   style: UITextStyle.bodyNormal.copyWith(
                       color: UIColors.purple, fontSize: 20),
                 ),

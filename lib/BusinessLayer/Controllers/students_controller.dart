@@ -33,4 +33,5 @@ class StudentsController extends GetxController{
     update();
 
   }
+
 }

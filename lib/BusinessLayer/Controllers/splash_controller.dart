@@ -10,7 +10,8 @@ class SplashController extends GetxController {
   Future<void> checkAuth() async {
     bool authed = await boxClient.getAuthState();
     if (authed == true) {
-      MyApp.appUserTeacher = await boxClient.getAuthedUser();
+      MyApp.appUserTeacher =
+      await boxClient.getAuthedUser();
       Future.delayed(const Duration(seconds: 3))
           .then((value) => Get.offAndToNamed(AppRoutes.homeScreen));
     } else {

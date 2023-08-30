@@ -14,4 +14,14 @@ class StudentsRepo {
     }
     return [];
   }
+
+  Future<List<Student>> getTeacherStudents() async {
+    var response = await client.getTeacherStudents();
+    if (response != "") {
+      final data = json.decode(response).cast<Map<String, dynamic>>();
+      return data.map<Student>((json) => Student.fromMap(json))
+          .toList();
+    }
+    return [];
+  }
 }

@@ -15,17 +15,17 @@ class BoxClient {
   }
 
   Future<User> getAuthedUser() async {
-    return User.fromBoxMap(await box.read('user_teacher'));
+    return User.fromBoxMap(await box.read('teacher'));
   }
 
   Future<void> setAuthedUser(User user) async {
     await box.write('authed_teacher', true);
-    await box.write('user_teacher', user.toMap());
+    await box.write('teacher', user.toMap());
   }
 
   Future<void> removeUserData() async {
     await box.remove('authed_teacher');
-    await box.remove('user_teacher');
+    await box.remove('teacher');
   }
 
 }

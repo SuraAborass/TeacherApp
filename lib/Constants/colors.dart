@@ -12,6 +12,7 @@ static const normalText = Color(0xff707070);
 static const darkNormalText = Color(0xff6D6D6D);
 static const circleAvatarBackground = Color(0xffD5D5D5);
 static const pageTitle = Color(0xff005178);
+static const student = Color(0xffFFEEF4);
 
 //shimmers
   static const shimmerBaseColor = Color.fromARGB(225,248, 248, 248);

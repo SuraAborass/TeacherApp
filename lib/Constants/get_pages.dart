@@ -6,6 +6,7 @@ import '../PresentationLayer/Screens/Public/class_rooms_screen.dart';
 import '../PresentationLayer/Screens/Public/classes_screen.dart';
 import '../PresentationLayer/Screens/Public/home_screen.dart';
 import '../PresentationLayer/Screens/Public/splash_screen.dart';
+import '../PresentationLayer/Screens/Public/teacher_students_screen.dart';
 import 'get_routes.dart';
 
 List<GetPage<dynamic>> getPages = [
@@ -35,5 +36,8 @@ List<GetPage<dynamic>> getPages = [
       name: AppRoutes.classRooms,
       page: () => ClassRoomsScreen(),
       transition: Transition.rightToLeftWithFade),
+  GetPage(
+      name: AppRoutes.teacherStudents,
+      page: () => TeacherStudentsScreen(),),
 
 ];

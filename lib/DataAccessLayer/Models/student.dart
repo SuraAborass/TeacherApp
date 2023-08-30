@@ -50,4 +50,9 @@ class Student {
     );
   }
 
+  String toJson() => json.encode(toMap());
+  factory Student.fromJson(String source) =>
+      Student.fromMap(json.decode(source) as Map<String, dynamic>);
+
+
 }
